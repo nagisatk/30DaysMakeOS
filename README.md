@@ -13,9 +13,9 @@
 把`run.bat`的内容稍微改了一下，这样可以每次修改`hello.nas`之后直接双击`run.bat`就可以看到效果了。
 
 ## Day02
-把.nas的后缀改成了.asm，不会对最终效果产生什么影响。
+把`.nas`的后缀改成了`.asm`，不会对最终效果产生什么影响。
 
 只是不用手动在Notepad++中选择语言高亮了。
 
-Makefile中的install任务无法执行，因为imgtol.com与64位系统不兼容。
+`Makefile`中的`install`任务无法执行，因为`imgtol.com`与64位系统不兼容。
 
