@@ -1,20 +1,20 @@
 ; naskfunc
 ; TAB=4
 
-[FORMAT "WCOFF"]				; §ì–Ú?•¶Œ“I–ÍŽ®
-[BITS 32]						; §ì32ˆÊ–ÍŽ®—p“IŠ÷ŠB?Œ¾
+[FORMAT "WCOFF"]				; åˆ¶ä½œç›®æ ‡æ–‡ä»¶çš„æ¨¡å¼
+[BITS 32]						; åˆ¶ä½œ32ä½æ¨¡æ¨¡å¼ç”¨çš„æœºæ¢°è¯­è¨€
 
 
-; §ì–Ú?•¶Œ“IM‘§
+; åˆ¶ä½œç›®æ ‡æ–‡ä»¶çš„ä¿¡æ¯
 
-[FILE "naskfunc.nas"]			; Œ¹•¶Œ–¼M‘§
+[FILE "naskfunc.nas"]			; æºæ–‡ä»¶åä¿¡æ¯
 
-		GLOBAL	_io_hlt			; ’ö˜’†•ïŠÜ“I”Ÿ”–¼
+		GLOBAL	_io_hlt			; ç¨‹åºä¸­åŒ…å«çš„å‡½æ•°å
 
 
-; ˆÈ‰º¥??“I”Ÿ”
+; ä»¥ä¸‹æ˜¯å®žé™…çš„å‡½æ•°
 
-[SECTION .text]		; –Ú?•¶Œ’†ŽÊ—¹?±”V@ÄŽÊ’ö˜
+[SECTION .text]		; ç›®æ ‡æ–‡ä»¶ä¸­å†™äº†è¿™äº›ä¹‹åŽå†å†™ç¨‹åº
 
 _io_hlt:	; void io_hlt(void);
 		HLT

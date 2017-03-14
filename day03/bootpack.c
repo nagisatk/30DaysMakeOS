@@ -1,11 +1,11 @@
-/* ?C??ŠíC—Lˆê˜¢”Ÿ”İ?“I•¶Œ—¢ */
+/* å‘Šè¯‰Cç¼–è¯‘å™¨ï¼Œæœ‰ä¸€ä¸ªå‡½æ•°åœ¨åˆ«çš„æ–‡ä»¶é‡Œ */
 void io_hlt(void);
 
 void HariMain(void)
 {
 
 fin:
-    /* ?—¢‘zÊãHLTC’A¥C?Œ¾’†•s”\—pHLT */
+    io_hlt(); /* æ‰§è¡Œnaskfunc.nasé‡Œçš„_io_hlt */
     goto fin;
 
 }
