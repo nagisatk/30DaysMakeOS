@@ -53,4 +53,4 @@
 最后的代码保留了原本画出混乱颜色的循环和画矩形的循环。把整个画面填充成*浅暗蓝色*的那一行代码注释掉了（就是第一次调用`boxfill8()`函数的地方）。
 
 这样显示出来的“伪桌面”就是这样的：
-()[./desktop.jpg]
+![“混乱的桌面”](https://github.com/nagisatk/30DaysMakeOS/blob/master/day04/desktop.jpg)
