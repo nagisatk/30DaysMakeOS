@@ -54,3 +54,7 @@
 
 这样显示出来的“伪桌面”就是这样的：
 ![“混乱的桌面”](https://github.com/nagisatk/30DaysMakeOS/blob/master/day04/desktop.jpg)
+## Day05
+保留了文字。
+
+换了背景色，懒得调。。要赶紧走了。
