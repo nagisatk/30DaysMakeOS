@@ -13,7 +13,7 @@ VMODE	EQU		0x0ff2			; ?色位数
 SCRNX	EQU		0x0ff4			; 分辨率のX
 SCRNY	EQU		0x0ff6			; 解像度のY
 VRAM	EQU		0x0ff8			; Graphic Bufferの開始番地
-VBEMODE	EQU		0x107			; Graphic Bufferの開始番地
+VBEMODE	EQU		0x105			; Graphic Bufferの開始番地
 
 		ORG		0xc200			; 程序?入地址
 
