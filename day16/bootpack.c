@@ -125,11 +125,10 @@ void HariMain(void) {
     tss_b.fs = 1 * 8;
     tss_b.gs = 1 * 8;
     *((int *) (task_b_esp + 4)) = (int) sht_back;
-    mt_init();
     // int *a;
     // a = (int *) 0xFEC;
     // *a = (int) sht_back;
-    count = 0;
+    
     while(1) {
         count++;
         io_cli();   // 屏蔽中断
@@ -137,27 +136,29 @@ void HariMain(void) {
             io_stihlt();
         } else {
             i = fifo32_get(&fifo);
-            io_sti();
             if(i <= 1) {
-                if(i != 0) {
-                    timer_init(timer3, &fifo, 0);
-                    cursor_c = COL8_000000;
-                } else {
-                    timer_init(timer3, &fifo, 1);
-                    cursor_c = COL8_FFFFFF;
-                }
+                // if(i != 0) {
+                    timer_init(timer3, &fifo, 1 - i);
+                    cursor_c = COL8_FFFFFF - cursor_c;
+                // } else {
+                    // timer_init(timer3, &fifo, 1);
+                    // cursor_c = COL8_FFFFFF;
+                // }
                 timer_settime(timer3, 50);
                 boxfill8(sht_win->buf, sht_win->bxsize, cursor_c, cursor_x, 28, cursor_x + 7, 43);
                 sheet_refresh(sht_win, cursor_x, 28, cursor_x + 8, 44); 
+            } else if(i == 2) {
+                farjmp(0, 4 * 8);
+                timer_settime(timer_ts, 2);
             } else if(i == 3) {
-                // sprintf(s, "%04d[sec]", timerctl.count/100);
-                putfonts8_asc_sht(sht_back, 0, 80, COL8_FFFFFF, COL8_008484, "3[sec]", 6);
+                sprintf(s, "%04d[sec]", timerctl.count/100);
+                putfonts8_asc_sht(sht_back, 0, 80, COL8_FFFFFF, COL8_008484, s, 9);
                 count = 0;
             } else if(i == 10) {
-                // sprintf(s, "%010d", count);
-                // putfonts8_asc_sht(sht_win, 40, 28, COL8_000000, COL8_C6C6C6, s, 10);
-                // sprintf(s, "%04d[sec]", timerctl.count/100);
-                putfonts8_asc_sht(sht_back, 0, 64, COL8_FFFFFF, COL8_008484, "10[sec]", 7);
+                sprintf(s, "%010d", count);
+                putfonts8_asc_sht(sht_win, 40, 28, COL8_000000, COL8_C6C6C6, s, 10);
+                sprintf(s, "%04d[sec]", timerctl.count/100);
+                putfonts8_asc_sht(sht_back, 0, 64, COL8_FFFFFF, COL8_008484, s, 9);
                 // taskswitch4();
             } else if(i >= 256 && i <= 511) {
                 sprintf(s, "%02X", i - 256);
@@ -177,7 +178,7 @@ void HariMain(void) {
                 boxfill8(sht_win->buf, sht_win->bxsize, cursor_c, cursor_x, 28, cursor_x + 7, 43);
                 sheet_refresh(sht_win, cursor_x, 28, cursor_x + 8, 44);
             } else if(i >= 512 && i <= 767) {
-                if(mouse_decode(&mdec, i - 512) != 0) {
+                if(mouse_decode(&mdec, i) != 0) {
                     sprintf(s, "[lcr %4d %4d]", mdec.x, mdec.y);
                     if((mdec.btn & 0x01) != 0)
                         s[1] = 'L';
